@@ -193,7 +193,8 @@
             const iframe = document.createElement('iframe');
             iframe.src = link.includes('youtube.com') ? link.replace('watch?v=', 'embed/') : link;
             iframe.style.width = '100%';
-            iframe.style.height = '500px';
+            iframe.style.height = '100%';
+            iframe.allowFullscreen = true;
             displayContainer.appendChild(iframe);
         });
 
