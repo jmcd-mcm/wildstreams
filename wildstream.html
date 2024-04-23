@@ -13,6 +13,10 @@
             font-family: Arial, sans-serif;
         }
 
+        body {
+            /*cursor: none;*/
+        }
+
         .container {
             display: flex;
             flex-direction: column;
@@ -40,7 +44,7 @@
             margin-top: 5px;
         }
 
-        .m-10{
+        .m-10 {
             margin-bottom: 10px;
             margin-top: 10px;
         }
@@ -60,7 +64,8 @@
         #cards, #inputContainer {
             display: none;
         }
-        #inputContainer{
+
+        #inputContainer {
             width: 100%;
         }
 
@@ -195,7 +200,50 @@
         document.getElementById('inputContainer').style.display = 'none';
     }
 
+
     document.getElementById('cards').style.display = 'flex'; // Show cards initially
+
+    // Initialize mouse position variables
+    let prevX = null;
+    let prevY = null;
+    let currX = null;
+    let currY = null;
+
+    // Set the time interval (in milliseconds) to check for mouse movement
+    const checkInterval = 500; // 1 second
+
+    // Function to check mouse movement
+    function mouseMovement(event) {
+        // Get current mouse position
+        currX = event.clientX;
+        currY = event.clientY;
+    }
+
+    // Attach event listener to mousemove event
+    document.addEventListener('mousemove', mouseMovement);
+
+    // Call checkMouseMovement function at specified interval
+    setInterval(() => {
+        checkMouseMovement();
+    }, checkInterval);
+
+    function checkMouseMovement() {
+        // If mouse position has changed, reset timer and update previous position
+        if (currX !== prevX || currY !== prevY) {
+            prevX = currX;
+            prevY = currY;
+            document.body.style.cursor = 'auto'; // Show cursor
+        } else {
+            if (document.body.style.cursor === 'none') {
+
+            }else{
+
+            }
+            // If mouse position hasn't changed, hide cursor
+            document.body.style.cursor = 'none';
+        }
+    }
+
 </script>
 </body>
 </html>
