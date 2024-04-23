@@ -196,6 +196,33 @@
     }
 
     document.getElementById('cards').style.display = 'flex'; // Show cards initially
+
+    // Initialize mouse position variables
+    let prevX = null;
+    let prevY = null;
+
+    // Set the time interval (in milliseconds) to check for mouse movement
+    const checkInterval = 500; // 0.5 second
+
+    // Function to check mouse movement
+    function checkMouseMovement() {
+        // Get current mouse position
+        const currX = event.clientX;
+        const currY = event.clientY;
+        // If mouse position has changed, reset timer and update previous position
+        if (currX !== prevX || currY !== prevY) {
+            prevX = currX;
+            prevY = currY;
+            document.body.style.cursor = 'auto'; // Show cursor
+        } else {
+            // If mouse position hasn't changed, hide cursor
+            document.body.style.cursor = 'none';
+        }
+    }
+
+    // Call checkMouseMovement function at specified interval
+    setInterval(checkMouseMovement, checkInterval);
+
 </script>
 </body>
 </html>
